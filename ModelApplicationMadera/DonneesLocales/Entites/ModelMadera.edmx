@@ -1,0 +1,2445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDDAPPLICATIONMADERAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BureauEtude">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mot_de_passe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="service" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel_portable" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="poste" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="date__heure_de_connexion" Type="datetime" Nullable="false" />
+          <Property Name="userMaderaname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="categorie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Caracteristique">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description_caracteristique" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="unite_caracteristique" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="valeur_caracteristique" Type="float" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="adresse1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="telephone" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="protable" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="intitule" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommandeClient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="id_devis" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommandeFournisseur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_creation" Type="date" Nullable="false" />
+          <Property Name="date_relance" Type="date" Nullable="false" />
+          <Property Name="date_livraison" Type="date" Nullable="false" />
+          <Property Name="nombre_relances" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="id_fournisseur" Type="int" Nullable="false" />
+          <Property Name="id_commande_client" Type="int" />
+        </EntityType>
+        <EntityType Name="Commercial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mot_de_passe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="service" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel_portable" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="poste" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="date__heure_de_connexion" Type="datetime" Nullable="false" />
+          <Property Name="userMaderaname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="categorie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Composant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nature" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="image_produit" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="couleur_dessin" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="prix_HT" Type="float" Nullable="false" />
+          <Property Name="stock" Type="int" Nullable="false" />
+          <Property Name="quantite_limite_de_stock_pour_commande_auto" Type="int" Nullable="false" />
+          <Property Name="nombre_de_composant_par_commande" Type="int" Nullable="false" />
+          <Property Name="commande_auto_active" Type="bit" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="id_unite_dusage" Type="int" Nullable="false" />
+          <Property Name="id_caracteristique" Type="int" Nullable="false" />
+          <Property Name="id_fournisseur" Type="int" />
+          <Property Name="nom_famille" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comptable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mot_de_passe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="service" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel_portable" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="poste" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="date__heure_de_connexion" Type="datetime" Nullable="false" />
+          <Property Name="userMaderaname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="categorie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Devis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="dossier_devis" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="dossier_technique" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="pourcentage_tva" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="id_projet" Type="int" Nullable="false" />
+          <Property Name="nom_statut_devis" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_gamme" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EcheanceDePaiement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pourcentage_du" Type="int" Nullable="false" />
+          <Property Name="date_facturation" Type="date" Nullable="false" />
+          <Property Name="date_relance" Type="date" Nullable="false" />
+          <Property Name="nombre_relances" Type="int" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="id_facture" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="id_commande_client" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamilleDeComposant">
+          <Key>
+            <PropertyRef Name="nom_famille" />
+          </Key>
+          <Property Name="nom_famille" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nom_famille_famille_de_composant" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamilleDeModule">
+          <Key>
+            <PropertyRef Name="nom_famille" />
+          </Key>
+          <Property Name="nom_famille" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nom_famille_famille_de_module" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamilleGamme">
+          <Key>
+            <PropertyRef Name="famille_gamme" />
+          </Key>
+          <Property Name="famille_gamme" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fournisseur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="raison_sociale" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="numero_tva" Type="int" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="logo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="adresseSiegeSocial" Type="text" Nullable="false" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gamme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_gamme" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="famille_couverture" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="famille_isolant" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="famille_finition_exterieure" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mode_conception_ossature" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="famille_gamme" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_unite_dusage" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Huisserie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="descriptif" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="qualite" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="coupe_de_principe" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cctp" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="created_at_module" Type="date" Nullable="false" />
+          <Property Name="updated_at_module" Type="date" Nullable="false" />
+          <Property Name="id_caracteristique" Type="int" Nullable="false" />
+          <Property Name="id_unite_dusage" Type="int" Nullable="false" />
+          <Property Name="nom_famille" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LigneDevis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quantite" Type="int" Nullable="false" />
+          <Property Name="prixHT" Type="float" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="id_devis" Type="int" />
+          <Property Name="id_composant" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LinkBureauetudeModule">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_bureau_etude" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_bureau_etude" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LinkCommercialProjet">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_commercial" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_commercial" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LinkGammeCaracteristique">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_gamme" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_gamme" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LinkGammeModule">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_module" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_module" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LinkModuleComposant">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_composant" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_composant" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModePaiement">
+          <Key>
+            <PropertyRef Name="mode" />
+          </Key>
+          <Property Name="mode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="coupe_de_principe" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cctp" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="id_caracteristique" Type="int" Nullable="false" />
+          <Property Name="id_unite_dusage" Type="int" Nullable="false" />
+          <Property Name="nom_famille" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paiement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_paiement" Type="date" Nullable="false" />
+          <Property Name="montant" Type="float" Nullable="false" />
+          <Property Name="monnaie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="mode" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_echeance_de_paiement" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reference" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+          <Property Name="id_client" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatutDevis">
+          <Key>
+            <PropertyRef Name="nom" />
+          </Key>
+          <Property Name="nom" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UniteDusage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description_unite_usage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="unite_unite_usage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="valeur_unite_usage" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMadera">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mot_de_passe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="service" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel_portable" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="poste" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="date__heure_de_connexion" Type="datetime" Nullable="false" />
+          <Property Name="userMaderaname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="categorie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="bureau_etude_userMadera0_FK">
+          <End Role="UserMadera" Type="Self.UserMadera" Multiplicity="1" />
+          <End Role="BureauEtude" Type="Self.BureauEtude" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserMadera">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BureauEtude">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="commande_client_devis0_FK">
+          <End Role="Devis" Type="Self.Devis" Multiplicity="1" />
+          <End Role="CommandeClient" Type="Self.CommandeClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devis">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommandeClient">
+              <PropertyRef Name="id_devis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="commande_fournisseur_commande_client1_FK">
+          <End Role="CommandeClient" Type="Self.CommandeClient" Multiplicity="0..1" />
+          <End Role="CommandeFournisseur" Type="Self.CommandeFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommandeClient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommandeFournisseur">
+              <PropertyRef Name="id_commande_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="commande_fournisseur_fournisseur0_FK">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
+          <End Role="CommandeFournisseur" Type="Self.CommandeFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommandeFournisseur">
+              <PropertyRef Name="id_fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="commercial_userMadera0_FK">
+          <End Role="UserMadera" Type="Self.UserMadera" Multiplicity="1" />
+          <End Role="Commercial" Type="Self.Commercial" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserMadera">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Commercial">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="composant_caracteristique1_FK">
+          <End Role="Caracteristique" Type="Self.Caracteristique" Multiplicity="1" />
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristique">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Composant">
+              <PropertyRef Name="id_caracteristique" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="composant_famille_de_composant3_FK">
+          <End Role="FamilleDeComposant" Type="Self.FamilleDeComposant" Multiplicity="1" />
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeComposant">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="Composant">
+              <PropertyRef Name="nom_famille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="composant_fournisseur2_FK">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Composant">
+              <PropertyRef Name="id_fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="composant_unite_dusage0_FK">
+          <End Role="UniteDusage" Type="Self.UniteDusage" Multiplicity="1" />
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniteDusage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Composant">
+              <PropertyRef Name="id_unite_dusage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comptable_userMadera0_FK">
+          <End Role="UserMadera" Type="Self.UserMadera" Multiplicity="1" />
+          <End Role="Comptable" Type="Self.Comptable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserMadera">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comptable">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="devis_gamme2_FK">
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="1" />
+          <End Role="Devis" Type="Self.Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Devis">
+              <PropertyRef Name="id_gamme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="devis_projet0_FK">
+          <End Role="Projet" Type="Self.Projet" Multiplicity="1" />
+          <End Role="Devis" Type="Self.Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Devis">
+              <PropertyRef Name="id_projet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="devis_statut_devis1_FK">
+          <End Role="StatutDevis" Type="Self.StatutDevis" Multiplicity="1" />
+          <End Role="Devis" Type="Self.Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatutDevis">
+              <PropertyRef Name="nom" />
+            </Principal>
+            <Dependent Role="Devis">
+              <PropertyRef Name="nom_statut_devis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="echeance_de_paiement_facture0_FK">
+          <End Role="Facture" Type="Self.Facture" Multiplicity="1" />
+          <End Role="EcheanceDePaiement" Type="Self.EcheanceDePaiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facture">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EcheanceDePaiement">
+              <PropertyRef Name="id_facture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="facture_commande_client0_FK">
+          <End Role="CommandeClient" Type="Self.CommandeClient" Multiplicity="1" />
+          <End Role="Facture" Type="Self.Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommandeClient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Facture">
+              <PropertyRef Name="id_commande_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="famille_de_composant_famille_de_composant0_FK">
+          <End Role="FamilleDeComposant" Type="Self.FamilleDeComposant" Multiplicity="1" />
+          <End Role="FamilleDeComposant1" Type="Self.FamilleDeComposant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeComposant">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="FamilleDeComposant1">
+              <PropertyRef Name="nom_famille_famille_de_composant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="famille_de_module_famille_de_module0_FK">
+          <End Role="FamilleDeModule" Type="Self.FamilleDeModule" Multiplicity="1" />
+          <End Role="FamilleDeModule1" Type="Self.FamilleDeModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeModule">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="FamilleDeModule1">
+              <PropertyRef Name="nom_famille_famille_de_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="gamme_famille_gamme0_FK">
+          <End Role="FamilleGamme" Type="Self.FamilleGamme" Multiplicity="1" />
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleGamme">
+              <PropertyRef Name="famille_gamme" />
+            </Principal>
+            <Dependent Role="Gamme">
+              <PropertyRef Name="famille_gamme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="gamme_unite_dusage1_FK">
+          <End Role="UniteDusage" Type="Self.UniteDusage" Multiplicity="1" />
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniteDusage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gamme">
+              <PropertyRef Name="id_unite_dusage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="huisserie_caracteristique1_FK">
+          <End Role="Caracteristique" Type="Self.Caracteristique" Multiplicity="1" />
+          <End Role="Huisserie" Type="Self.Huisserie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristique">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Huisserie">
+              <PropertyRef Name="id_caracteristique" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="huisserie_famille_de_module3_FK">
+          <End Role="FamilleDeModule" Type="Self.FamilleDeModule" Multiplicity="1" />
+          <End Role="Huisserie" Type="Self.Huisserie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeModule">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="Huisserie">
+              <PropertyRef Name="nom_famille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="huisserie_module0_FK">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="Huisserie" Type="Self.Huisserie" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Huisserie">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="huisserie_unite_dusage2_FK">
+          <End Role="UniteDusage" Type="Self.UniteDusage" Multiplicity="1" />
+          <End Role="Huisserie" Type="Self.Huisserie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniteDusage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Huisserie">
+              <PropertyRef Name="id_unite_dusage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ligne_devis_composant1_FK">
+          <End Role="Composant" Type="Self.Composant" Multiplicity="1" />
+          <End Role="LigneDevis" Type="Self.LigneDevis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Composant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LigneDevis">
+              <PropertyRef Name="id_composant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ligne_devis_devis0_FK">
+          <End Role="Devis" Type="Self.Devis" Multiplicity="0..1" />
+          <End Role="LigneDevis" Type="Self.LigneDevis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devis">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LigneDevis">
+              <PropertyRef Name="id_devis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_bureauetude_module_bureau_etude1_FK">
+          <End Role="BureauEtude" Type="Self.BureauEtude" Multiplicity="1" />
+          <End Role="LinkBureauetudeModule" Type="Self.LinkBureauetudeModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BureauEtude">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkBureauetudeModule">
+              <PropertyRef Name="id_bureau_etude" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_bureauetude_module_module0_FK">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="LinkBureauetudeModule" Type="Self.LinkBureauetudeModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkBureauetudeModule">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_commercial_projet_commercial1_FK">
+          <End Role="Commercial" Type="Self.Commercial" Multiplicity="1" />
+          <End Role="LinkCommercialProjet" Type="Self.LinkCommercialProjet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commercial">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkCommercialProjet">
+              <PropertyRef Name="id_commercial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_commercial_projet_projet0_FK">
+          <End Role="Projet" Type="Self.Projet" Multiplicity="1" />
+          <End Role="LinkCommercialProjet" Type="Self.LinkCommercialProjet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkCommercialProjet">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_gamme_caracteristique_caracteristique0_FK">
+          <End Role="Caracteristique" Type="Self.Caracteristique" Multiplicity="1" />
+          <End Role="LinkGammeCaracteristique" Type="Self.LinkGammeCaracteristique" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristique">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkGammeCaracteristique">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_gamme_caracteristique_gamme1_FK">
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="1" />
+          <End Role="LinkGammeCaracteristique" Type="Self.LinkGammeCaracteristique" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkGammeCaracteristique">
+              <PropertyRef Name="id_gamme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_gamme_module_gamme0_FK">
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="1" />
+          <End Role="LinkGammeModule" Type="Self.LinkGammeModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkGammeModule">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_gamme_module_module1_FK">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="LinkGammeModule" Type="Self.LinkGammeModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkGammeModule">
+              <PropertyRef Name="id_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_module_composant_composant1_FK">
+          <End Role="Composant" Type="Self.Composant" Multiplicity="1" />
+          <End Role="LinkModuleComposant" Type="Self.LinkModuleComposant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Composant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkModuleComposant">
+              <PropertyRef Name="id_composant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="link_module_composant_module0_FK">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="LinkModuleComposant" Type="Self.LinkModuleComposant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LinkModuleComposant">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="module_caracteristique0_FK">
+          <End Role="Caracteristique" Type="Self.Caracteristique" Multiplicity="1" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristique">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="id_caracteristique" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="module_famille_de_module2_FK">
+          <End Role="FamilleDeModule" Type="Self.FamilleDeModule" Multiplicity="1" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeModule">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="nom_famille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="module_unite_dusage1_FK">
+          <End Role="UniteDusage" Type="Self.UniteDusage" Multiplicity="1" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniteDusage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="id_unite_dusage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="paiement_echeance_de_paiement1_FK">
+          <End Role="EcheanceDePaiement" Type="Self.EcheanceDePaiement" Multiplicity="1" />
+          <End Role="Paiement" Type="Self.Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EcheanceDePaiement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Paiement">
+              <PropertyRef Name="id_echeance_de_paiement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="paiement_mode_paiement0_FK">
+          <End Role="ModePaiement" Type="Self.ModePaiement" Multiplicity="0..1" />
+          <End Role="Paiement" Type="Self.Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModePaiement">
+              <PropertyRef Name="mode" />
+            </Principal>
+            <Dependent Role="Paiement">
+              <PropertyRef Name="mode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projet_client0_FK">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Projet" Type="Self.Projet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Projet">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDDAPPLICATIONMADERAModelStoreContainer">
+          <EntitySet Name="BureauEtude" EntityType="Self.BureauEtude" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Caracteristique" EntityType="Self.Caracteristique" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommandeClient" EntityType="Self.CommandeClient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommandeFournisseur" EntityType="Self.CommandeFournisseur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commercial" EntityType="Self.Commercial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Composant" EntityType="Self.Composant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comptable" EntityType="Self.Comptable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Devis" EntityType="Self.Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EcheanceDePaiement" EntityType="Self.EcheanceDePaiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facture" EntityType="Self.Facture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilleDeComposant" EntityType="Self.FamilleDeComposant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilleDeModule" EntityType="Self.FamilleDeModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilleGamme" EntityType="Self.FamilleGamme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gamme" EntityType="Self.Gamme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Huisserie" EntityType="Self.Huisserie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LigneDevis" EntityType="Self.LigneDevis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinkBureauetudeModule" EntityType="Self.LinkBureauetudeModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinkCommercialProjet" EntityType="Self.LinkCommercialProjet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinkGammeCaracteristique" EntityType="Self.LinkGammeCaracteristique" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinkGammeModule" EntityType="Self.LinkGammeModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinkModuleComposant" EntityType="Self.LinkModuleComposant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModePaiement" EntityType="Self.ModePaiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paiement" EntityType="Self.Paiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projet" EntityType="Self.Projet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatutDevis" EntityType="Self.StatutDevis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UniteDusage" EntityType="Self.UniteDusage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMadera" EntityType="Self.UserMadera" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="bureau_etude_userMadera0_FK" Association="Self.bureau_etude_userMadera0_FK">
+            <End Role="UserMadera" EntitySet="UserMadera" />
+            <End Role="BureauEtude" EntitySet="BureauEtude" />
+          </AssociationSet>
+          <AssociationSet Name="commande_client_devis0_FK" Association="Self.commande_client_devis0_FK">
+            <End Role="Devis" EntitySet="Devis" />
+            <End Role="CommandeClient" EntitySet="CommandeClient" />
+          </AssociationSet>
+          <AssociationSet Name="commande_fournisseur_commande_client1_FK" Association="Self.commande_fournisseur_commande_client1_FK">
+            <End Role="CommandeClient" EntitySet="CommandeClient" />
+            <End Role="CommandeFournisseur" EntitySet="CommandeFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="commande_fournisseur_fournisseur0_FK" Association="Self.commande_fournisseur_fournisseur0_FK">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="CommandeFournisseur" EntitySet="CommandeFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="commercial_userMadera0_FK" Association="Self.commercial_userMadera0_FK">
+            <End Role="UserMadera" EntitySet="UserMadera" />
+            <End Role="Commercial" EntitySet="Commercial" />
+          </AssociationSet>
+          <AssociationSet Name="composant_caracteristique1_FK" Association="Self.composant_caracteristique1_FK">
+            <End Role="Caracteristique" EntitySet="Caracteristique" />
+            <End Role="Composant" EntitySet="Composant" />
+          </AssociationSet>
+          <AssociationSet Name="composant_famille_de_composant3_FK" Association="Self.composant_famille_de_composant3_FK">
+            <End Role="FamilleDeComposant" EntitySet="FamilleDeComposant" />
+            <End Role="Composant" EntitySet="Composant" />
+          </AssociationSet>
+          <AssociationSet Name="composant_fournisseur2_FK" Association="Self.composant_fournisseur2_FK">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Composant" EntitySet="Composant" />
+          </AssociationSet>
+          <AssociationSet Name="composant_unite_dusage0_FK" Association="Self.composant_unite_dusage0_FK">
+            <End Role="UniteDusage" EntitySet="UniteDusage" />
+            <End Role="Composant" EntitySet="Composant" />
+          </AssociationSet>
+          <AssociationSet Name="comptable_userMadera0_FK" Association="Self.comptable_userMadera0_FK">
+            <End Role="UserMadera" EntitySet="UserMadera" />
+            <End Role="Comptable" EntitySet="Comptable" />
+          </AssociationSet>
+          <AssociationSet Name="devis_gamme2_FK" Association="Self.devis_gamme2_FK">
+            <End Role="Gamme" EntitySet="Gamme" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="devis_projet0_FK" Association="Self.devis_projet0_FK">
+            <End Role="Projet" EntitySet="Projet" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="devis_statut_devis1_FK" Association="Self.devis_statut_devis1_FK">
+            <End Role="StatutDevis" EntitySet="StatutDevis" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="echeance_de_paiement_facture0_FK" Association="Self.echeance_de_paiement_facture0_FK">
+            <End Role="Facture" EntitySet="Facture" />
+            <End Role="EcheanceDePaiement" EntitySet="EcheanceDePaiement" />
+          </AssociationSet>
+          <AssociationSet Name="facture_commande_client0_FK" Association="Self.facture_commande_client0_FK">
+            <End Role="CommandeClient" EntitySet="CommandeClient" />
+            <End Role="Facture" EntitySet="Facture" />
+          </AssociationSet>
+          <AssociationSet Name="famille_de_composant_famille_de_composant0_FK" Association="Self.famille_de_composant_famille_de_composant0_FK">
+            <End Role="FamilleDeComposant" EntitySet="FamilleDeComposant" />
+            <End Role="FamilleDeComposant1" EntitySet="FamilleDeComposant" />
+          </AssociationSet>
+          <AssociationSet Name="famille_de_module_famille_de_module0_FK" Association="Self.famille_de_module_famille_de_module0_FK">
+            <End Role="FamilleDeModule" EntitySet="FamilleDeModule" />
+            <End Role="FamilleDeModule1" EntitySet="FamilleDeModule" />
+          </AssociationSet>
+          <AssociationSet Name="gamme_famille_gamme0_FK" Association="Self.gamme_famille_gamme0_FK">
+            <End Role="FamilleGamme" EntitySet="FamilleGamme" />
+            <End Role="Gamme" EntitySet="Gamme" />
+          </AssociationSet>
+          <AssociationSet Name="gamme_unite_dusage1_FK" Association="Self.gamme_unite_dusage1_FK">
+            <End Role="UniteDusage" EntitySet="UniteDusage" />
+            <End Role="Gamme" EntitySet="Gamme" />
+          </AssociationSet>
+          <AssociationSet Name="huisserie_caracteristique1_FK" Association="Self.huisserie_caracteristique1_FK">
+            <End Role="Caracteristique" EntitySet="Caracteristique" />
+            <End Role="Huisserie" EntitySet="Huisserie" />
+          </AssociationSet>
+          <AssociationSet Name="huisserie_famille_de_module3_FK" Association="Self.huisserie_famille_de_module3_FK">
+            <End Role="FamilleDeModule" EntitySet="FamilleDeModule" />
+            <End Role="Huisserie" EntitySet="Huisserie" />
+          </AssociationSet>
+          <AssociationSet Name="huisserie_module0_FK" Association="Self.huisserie_module0_FK">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Huisserie" EntitySet="Huisserie" />
+          </AssociationSet>
+          <AssociationSet Name="huisserie_unite_dusage2_FK" Association="Self.huisserie_unite_dusage2_FK">
+            <End Role="UniteDusage" EntitySet="UniteDusage" />
+            <End Role="Huisserie" EntitySet="Huisserie" />
+          </AssociationSet>
+          <AssociationSet Name="ligne_devis_composant1_FK" Association="Self.ligne_devis_composant1_FK">
+            <End Role="Composant" EntitySet="Composant" />
+            <End Role="LigneDevis" EntitySet="LigneDevis" />
+          </AssociationSet>
+          <AssociationSet Name="ligne_devis_devis0_FK" Association="Self.ligne_devis_devis0_FK">
+            <End Role="Devis" EntitySet="Devis" />
+            <End Role="LigneDevis" EntitySet="LigneDevis" />
+          </AssociationSet>
+          <AssociationSet Name="link_bureauetude_module_bureau_etude1_FK" Association="Self.link_bureauetude_module_bureau_etude1_FK">
+            <End Role="BureauEtude" EntitySet="BureauEtude" />
+            <End Role="LinkBureauetudeModule" EntitySet="LinkBureauetudeModule" />
+          </AssociationSet>
+          <AssociationSet Name="link_bureauetude_module_module0_FK" Association="Self.link_bureauetude_module_module0_FK">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="LinkBureauetudeModule" EntitySet="LinkBureauetudeModule" />
+          </AssociationSet>
+          <AssociationSet Name="link_commercial_projet_commercial1_FK" Association="Self.link_commercial_projet_commercial1_FK">
+            <End Role="Commercial" EntitySet="Commercial" />
+            <End Role="LinkCommercialProjet" EntitySet="LinkCommercialProjet" />
+          </AssociationSet>
+          <AssociationSet Name="link_commercial_projet_projet0_FK" Association="Self.link_commercial_projet_projet0_FK">
+            <End Role="Projet" EntitySet="Projet" />
+            <End Role="LinkCommercialProjet" EntitySet="LinkCommercialProjet" />
+          </AssociationSet>
+          <AssociationSet Name="link_gamme_caracteristique_caracteristique0_FK" Association="Self.link_gamme_caracteristique_caracteristique0_FK">
+            <End Role="Caracteristique" EntitySet="Caracteristique" />
+            <End Role="LinkGammeCaracteristique" EntitySet="LinkGammeCaracteristique" />
+          </AssociationSet>
+          <AssociationSet Name="link_gamme_caracteristique_gamme1_FK" Association="Self.link_gamme_caracteristique_gamme1_FK">
+            <End Role="Gamme" EntitySet="Gamme" />
+            <End Role="LinkGammeCaracteristique" EntitySet="LinkGammeCaracteristique" />
+          </AssociationSet>
+          <AssociationSet Name="link_gamme_module_gamme0_FK" Association="Self.link_gamme_module_gamme0_FK">
+            <End Role="Gamme" EntitySet="Gamme" />
+            <End Role="LinkGammeModule" EntitySet="LinkGammeModule" />
+          </AssociationSet>
+          <AssociationSet Name="link_gamme_module_module1_FK" Association="Self.link_gamme_module_module1_FK">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="LinkGammeModule" EntitySet="LinkGammeModule" />
+          </AssociationSet>
+          <AssociationSet Name="link_module_composant_composant1_FK" Association="Self.link_module_composant_composant1_FK">
+            <End Role="Composant" EntitySet="Composant" />
+            <End Role="LinkModuleComposant" EntitySet="LinkModuleComposant" />
+          </AssociationSet>
+          <AssociationSet Name="link_module_composant_module0_FK" Association="Self.link_module_composant_module0_FK">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="LinkModuleComposant" EntitySet="LinkModuleComposant" />
+          </AssociationSet>
+          <AssociationSet Name="module_caracteristique0_FK" Association="Self.module_caracteristique0_FK">
+            <End Role="Caracteristique" EntitySet="Caracteristique" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="module_famille_de_module2_FK" Association="Self.module_famille_de_module2_FK">
+            <End Role="FamilleDeModule" EntitySet="FamilleDeModule" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="module_unite_dusage1_FK" Association="Self.module_unite_dusage1_FK">
+            <End Role="UniteDusage" EntitySet="UniteDusage" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="paiement_echeance_de_paiement1_FK" Association="Self.paiement_echeance_de_paiement1_FK">
+            <End Role="EcheanceDePaiement" EntitySet="EcheanceDePaiement" />
+            <End Role="Paiement" EntitySet="Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="paiement_mode_paiement0_FK" Association="Self.paiement_mode_paiement0_FK">
+            <End Role="ModePaiement" EntitySet="ModePaiement" />
+            <End Role="Paiement" EntitySet="Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="projet_client0_FK" Association="Self.projet_client0_FK">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Projet" EntitySet="Projet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDDAPPLICATIONMADERAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BureauEtude">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel_portable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="poste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date__heure_de_connexion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="userMaderaname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="categorie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="UserMadera" Relationship="Self.bureau_etude_userMadera0_FK" FromRole="BureauEtude" ToRole="UserMadera" />
+          <NavigationProperty Name="Module" Relationship="Self.LinkBureauetudeModule" FromRole="BureauEtude" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="Caracteristique">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description_caracteristique" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="unite_caracteristique" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="valeur_caracteristique" Type="Double" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Composant" Relationship="Self.composant_caracteristique1_FK" FromRole="Caracteristique" ToRole="Composant" />
+          <NavigationProperty Name="Huisserie" Relationship="Self.huisserie_caracteristique1_FK" FromRole="Caracteristique" ToRole="Huisserie" />
+          <NavigationProperty Name="Module" Relationship="Self.module_caracteristique0_FK" FromRole="Caracteristique" ToRole="Module" />
+          <NavigationProperty Name="Gamme" Relationship="Self.LinkGammeCaracteristique" FromRole="Caracteristique" ToRole="Gamme" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adresse1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="protable" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="intitule" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Projet" Relationship="Self.projet_client0_FK" FromRole="Client" ToRole="Projet" />
+        </EntityType>
+        <EntityType Name="CommandeClient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_devis" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Devis" Relationship="Self.commande_client_devis0_FK" FromRole="CommandeClient" ToRole="Devis" />
+          <NavigationProperty Name="CommandeFournisseur" Relationship="Self.commande_fournisseur_commande_client1_FK" FromRole="CommandeClient" ToRole="CommandeFournisseur" />
+          <NavigationProperty Name="Facture" Relationship="Self.facture_commande_client0_FK" FromRole="CommandeClient" ToRole="Facture" />
+        </EntityType>
+        <EntityType Name="CommandeFournisseur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_creation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_relance" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_livraison" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nombre_relances" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_fournisseur" Type="Int32" Nullable="false" />
+          <Property Name="id_commande_client" Type="Int32" />
+          <NavigationProperty Name="CommandeClient" Relationship="Self.commande_fournisseur_commande_client1_FK" FromRole="CommandeFournisseur" ToRole="CommandeClient" />
+          <NavigationProperty Name="Fournisseur" Relationship="Self.commande_fournisseur_fournisseur0_FK" FromRole="CommandeFournisseur" ToRole="Fournisseur" />
+        </EntityType>
+        <EntityType Name="Commercial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel_portable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="poste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date__heure_de_connexion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="userMaderaname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="categorie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="UserMadera" Relationship="Self.commercial_userMadera0_FK" FromRole="Commercial" ToRole="UserMadera" />
+          <NavigationProperty Name="Projet" Relationship="Self.LinkCommercialProjet" FromRole="Commercial" ToRole="Projet" />
+        </EntityType>
+        <EntityType Name="Composant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image_produit" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="couleur_dessin" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="prix_HT" Type="Double" Nullable="false" />
+          <Property Name="stock" Type="Int32" Nullable="false" />
+          <Property Name="quantite_limite_de_stock_pour_commande_auto" Type="Int32" Nullable="false" />
+          <Property Name="nombre_de_composant_par_commande" Type="Int32" Nullable="false" />
+          <Property Name="commande_auto_active" Type="Boolean" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_unite_dusage" Type="Int32" Nullable="false" />
+          <Property Name="id_caracteristique" Type="Int32" Nullable="false" />
+          <Property Name="id_fournisseur" Type="Int32" />
+          <Property Name="nom_famille" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Caracteristique" Relationship="Self.composant_caracteristique1_FK" FromRole="Composant" ToRole="Caracteristique" />
+          <NavigationProperty Name="FamilleDeComposant" Relationship="Self.composant_famille_de_composant3_FK" FromRole="Composant" ToRole="FamilleDeComposant" />
+          <NavigationProperty Name="Fournisseur" Relationship="Self.composant_fournisseur2_FK" FromRole="Composant" ToRole="Fournisseur" />
+          <NavigationProperty Name="UniteDusage" Relationship="Self.composant_unite_dusage0_FK" FromRole="Composant" ToRole="UniteDusage" />
+          <NavigationProperty Name="LigneDevis" Relationship="Self.ligne_devis_composant1_FK" FromRole="Composant" ToRole="LigneDevis" />
+          <NavigationProperty Name="Module" Relationship="Self.LinkModuleComposant" FromRole="Composant" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="Comptable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel_portable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="poste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date__heure_de_connexion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="userMaderaname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="categorie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="UserMadera" Relationship="Self.comptable_userMadera0_FK" FromRole="Comptable" ToRole="UserMadera" />
+        </EntityType>
+        <EntityType Name="Devis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dossier_devis" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="dossier_technique" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="pourcentage_tva" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_projet" Type="Int32" Nullable="false" />
+          <Property Name="nom_statut_devis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_gamme" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommandeClient" Relationship="Self.commande_client_devis0_FK" FromRole="Devis" ToRole="CommandeClient" />
+          <NavigationProperty Name="Gamme" Relationship="Self.devis_gamme2_FK" FromRole="Devis" ToRole="Gamme" />
+          <NavigationProperty Name="Projet" Relationship="Self.devis_projet0_FK" FromRole="Devis" ToRole="Projet" />
+          <NavigationProperty Name="StatutDevis" Relationship="Self.devis_statut_devis1_FK" FromRole="Devis" ToRole="StatutDevis" />
+          <NavigationProperty Name="LigneDevis" Relationship="Self.ligne_devis_devis0_FK" FromRole="Devis" ToRole="LigneDevis" />
+        </EntityType>
+        <EntityType Name="EcheanceDePaiement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pourcentage_du" Type="Int32" Nullable="false" />
+          <Property Name="date_facturation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_relance" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nombre_relances" Type="Int32" Nullable="false" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_facture" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Facture" Relationship="Self.echeance_de_paiement_facture0_FK" FromRole="EcheanceDePaiement" ToRole="Facture" />
+          <NavigationProperty Name="Paiement" Relationship="Self.paiement_echeance_de_paiement1_FK" FromRole="EcheanceDePaiement" ToRole="Paiement" />
+        </EntityType>
+        <EntityType Name="Facture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_commande_client" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommandeClient" Relationship="Self.facture_commande_client0_FK" FromRole="Facture" ToRole="CommandeClient" />
+          <NavigationProperty Name="EcheanceDePaiement" Relationship="Self.echeance_de_paiement_facture0_FK" FromRole="Facture" ToRole="EcheanceDePaiement" />
+        </EntityType>
+        <EntityType Name="FamilleDeComposant">
+          <Key>
+            <PropertyRef Name="nom_famille" />
+          </Key>
+          <Property Name="nom_famille" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom_famille_famille_de_composant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Composant" Relationship="Self.composant_famille_de_composant3_FK" FromRole="FamilleDeComposant" ToRole="Composant" />
+          <NavigationProperty Name="FamilleDeComposant1" Relationship="Self.famille_de_composant_famille_de_composant0_FK" FromRole="FamilleDeComposant" ToRole="FamilleDeComposant1" />
+          <NavigationProperty Name="FamilleDeComposant2" Relationship="Self.famille_de_composant_famille_de_composant0_FK" FromRole="FamilleDeComposant1" ToRole="FamilleDeComposant" />
+        </EntityType>
+        <EntityType Name="FamilleDeModule">
+          <Key>
+            <PropertyRef Name="nom_famille" />
+          </Key>
+          <Property Name="nom_famille" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom_famille_famille_de_module" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FamilleDeModule1" Relationship="Self.famille_de_module_famille_de_module0_FK" FromRole="FamilleDeModule" ToRole="FamilleDeModule1" />
+          <NavigationProperty Name="FamilleDeModule2" Relationship="Self.famille_de_module_famille_de_module0_FK" FromRole="FamilleDeModule1" ToRole="FamilleDeModule" />
+          <NavigationProperty Name="Huisserie" Relationship="Self.huisserie_famille_de_module3_FK" FromRole="FamilleDeModule" ToRole="Huisserie" />
+          <NavigationProperty Name="Module" Relationship="Self.module_famille_de_module2_FK" FromRole="FamilleDeModule" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="FamilleGamme">
+          <Key>
+            <PropertyRef Name="famille_gamme" />
+          </Key>
+          <Property Name="famille_gamme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Gamme" Relationship="Self.gamme_famille_gamme0_FK" FromRole="FamilleGamme" ToRole="Gamme" />
+        </EntityType>
+        <EntityType Name="Fournisseur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="raison_sociale" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numero_tva" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="logo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="adresseSiegeSocial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CommandeFournisseur" Relationship="Self.commande_fournisseur_fournisseur0_FK" FromRole="Fournisseur" ToRole="CommandeFournisseur" />
+          <NavigationProperty Name="Composant" Relationship="Self.composant_fournisseur2_FK" FromRole="Fournisseur" ToRole="Composant" />
+        </EntityType>
+        <EntityType Name="Gamme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_gamme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="famille_couverture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="famille_isolant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="famille_finition_exterieure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mode_conception_ossature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="famille_gamme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_unite_dusage" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Devis" Relationship="Self.devis_gamme2_FK" FromRole="Gamme" ToRole="Devis" />
+          <NavigationProperty Name="FamilleGamme" Relationship="Self.gamme_famille_gamme0_FK" FromRole="Gamme" ToRole="FamilleGamme" />
+          <NavigationProperty Name="UniteDusage" Relationship="Self.gamme_unite_dusage1_FK" FromRole="Gamme" ToRole="UniteDusage" />
+          <NavigationProperty Name="Caracteristique" Relationship="Self.LinkGammeCaracteristique" FromRole="Gamme" ToRole="Caracteristique" />
+          <NavigationProperty Name="Module" Relationship="Self.LinkGammeModule" FromRole="Gamme" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="Huisserie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="descriptif" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="qualite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="coupe_de_principe" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cctp" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="created_at_module" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at_module" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_caracteristique" Type="Int32" Nullable="false" />
+          <Property Name="id_unite_dusage" Type="Int32" Nullable="false" />
+          <Property Name="nom_famille" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Caracteristique" Relationship="Self.huisserie_caracteristique1_FK" FromRole="Huisserie" ToRole="Caracteristique" />
+          <NavigationProperty Name="FamilleDeModule" Relationship="Self.huisserie_famille_de_module3_FK" FromRole="Huisserie" ToRole="FamilleDeModule" />
+          <NavigationProperty Name="Module" Relationship="Self.huisserie_module0_FK" FromRole="Huisserie" ToRole="Module" />
+          <NavigationProperty Name="UniteDusage" Relationship="Self.huisserie_unite_dusage2_FK" FromRole="Huisserie" ToRole="UniteDusage" />
+        </EntityType>
+        <EntityType Name="LigneDevis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quantite" Type="Int32" Nullable="false" />
+          <Property Name="prixHT" Type="Double" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_devis" Type="Int32" />
+          <Property Name="id_composant" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Composant" Relationship="Self.ligne_devis_composant1_FK" FromRole="LigneDevis" ToRole="Composant" />
+          <NavigationProperty Name="Devis" Relationship="Self.ligne_devis_devis0_FK" FromRole="LigneDevis" ToRole="Devis" />
+        </EntityType>
+        <EntityType Name="ModePaiement">
+          <Key>
+            <PropertyRef Name="mode" />
+          </Key>
+          <Property Name="mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Paiement" Relationship="Self.paiement_mode_paiement0_FK" FromRole="ModePaiement" ToRole="Paiement" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="coupe_de_principe" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cctp" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_caracteristique" Type="Int32" Nullable="false" />
+          <Property Name="id_unite_dusage" Type="Int32" Nullable="false" />
+          <Property Name="nom_famille" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Caracteristique" Relationship="Self.module_caracteristique0_FK" FromRole="Module" ToRole="Caracteristique" />
+          <NavigationProperty Name="FamilleDeModule" Relationship="Self.module_famille_de_module2_FK" FromRole="Module" ToRole="FamilleDeModule" />
+          <NavigationProperty Name="Huisserie" Relationship="Self.huisserie_module0_FK" FromRole="Module" ToRole="Huisserie" />
+          <NavigationProperty Name="UniteDusage" Relationship="Self.module_unite_dusage1_FK" FromRole="Module" ToRole="UniteDusage" />
+          <NavigationProperty Name="BureauEtude" Relationship="Self.LinkBureauetudeModule" FromRole="Module" ToRole="BureauEtude" />
+          <NavigationProperty Name="Gamme" Relationship="Self.LinkGammeModule" FromRole="Module" ToRole="Gamme" />
+          <NavigationProperty Name="Composant" Relationship="Self.LinkModuleComposant" FromRole="Module" ToRole="Composant" />
+        </EntityType>
+        <EntityType Name="Paiement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_paiement" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="montant" Type="Double" Nullable="false" />
+          <Property Name="monnaie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_echeance_de_paiement" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EcheanceDePaiement" Relationship="Self.paiement_echeance_de_paiement1_FK" FromRole="Paiement" ToRole="EcheanceDePaiement" />
+          <NavigationProperty Name="ModePaiement" Relationship="Self.paiement_mode_paiement0_FK" FromRole="Paiement" ToRole="ModePaiement" />
+        </EntityType>
+        <EntityType Name="Projet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_client" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.projet_client0_FK" FromRole="Projet" ToRole="Client" />
+          <NavigationProperty Name="Devis" Relationship="Self.devis_projet0_FK" FromRole="Projet" ToRole="Devis" />
+          <NavigationProperty Name="Commercial" Relationship="Self.LinkCommercialProjet" FromRole="Projet" ToRole="Commercial" />
+        </EntityType>
+        <EntityType Name="StatutDevis">
+          <Key>
+            <PropertyRef Name="nom" />
+          </Key>
+          <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Devis" Relationship="Self.devis_statut_devis1_FK" FromRole="StatutDevis" ToRole="Devis" />
+        </EntityType>
+        <EntityType Name="UniteDusage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description_unite_usage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="unite_unite_usage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="valeur_unite_usage" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Composant" Relationship="Self.composant_unite_dusage0_FK" FromRole="UniteDusage" ToRole="Composant" />
+          <NavigationProperty Name="Gamme" Relationship="Self.gamme_unite_dusage1_FK" FromRole="UniteDusage" ToRole="Gamme" />
+          <NavigationProperty Name="Huisserie" Relationship="Self.huisserie_unite_dusage2_FK" FromRole="UniteDusage" ToRole="Huisserie" />
+          <NavigationProperty Name="Module" Relationship="Self.module_unite_dusage1_FK" FromRole="UniteDusage" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="UserMadera">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mot_de_passe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel_portable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="poste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date__heure_de_connexion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="userMaderaname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="categorie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="BureauEtude" Relationship="Self.bureau_etude_userMadera0_FK" FromRole="UserMadera" ToRole="BureauEtude" />
+          <NavigationProperty Name="Commercial" Relationship="Self.commercial_userMadera0_FK" FromRole="UserMadera" ToRole="Commercial" />
+          <NavigationProperty Name="Comptable" Relationship="Self.comptable_userMadera0_FK" FromRole="UserMadera" ToRole="Comptable" />
+        </EntityType>
+        <Association Name="bureau_etude_userMadera0_FK">
+          <End Role="UserMadera" Type="Self.UserMadera" Multiplicity="1" />
+          <End Role="BureauEtude" Type="Self.BureauEtude" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserMadera">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BureauEtude">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="composant_caracteristique1_FK">
+          <End Role="Caracteristique" Type="Self.Caracteristique" Multiplicity="1" />
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristique">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Composant">
+              <PropertyRef Name="id_caracteristique" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="huisserie_caracteristique1_FK">
+          <End Role="Caracteristique" Type="Self.Caracteristique" Multiplicity="1" />
+          <End Role="Huisserie" Type="Self.Huisserie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristique">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Huisserie">
+              <PropertyRef Name="id_caracteristique" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="module_caracteristique0_FK">
+          <End Role="Caracteristique" Type="Self.Caracteristique" Multiplicity="1" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristique">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="id_caracteristique" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projet_client0_FK">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Projet" Type="Self.Projet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Projet">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="commande_client_devis0_FK">
+          <End Role="Devis" Type="Self.Devis" Multiplicity="1" />
+          <End Role="CommandeClient" Type="Self.CommandeClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devis">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommandeClient">
+              <PropertyRef Name="id_devis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="commande_fournisseur_commande_client1_FK">
+          <End Role="CommandeClient" Type="Self.CommandeClient" Multiplicity="0..1" />
+          <End Role="CommandeFournisseur" Type="Self.CommandeFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommandeClient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommandeFournisseur">
+              <PropertyRef Name="id_commande_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="facture_commande_client0_FK">
+          <End Role="CommandeClient" Type="Self.CommandeClient" Multiplicity="1" />
+          <End Role="Facture" Type="Self.Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommandeClient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Facture">
+              <PropertyRef Name="id_commande_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="commande_fournisseur_fournisseur0_FK">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
+          <End Role="CommandeFournisseur" Type="Self.CommandeFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CommandeFournisseur">
+              <PropertyRef Name="id_fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="commercial_userMadera0_FK">
+          <End Role="UserMadera" Type="Self.UserMadera" Multiplicity="1" />
+          <End Role="Commercial" Type="Self.Commercial" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserMadera">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Commercial">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="composant_famille_de_composant3_FK">
+          <End Role="FamilleDeComposant" Type="Self.FamilleDeComposant" Multiplicity="1" />
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeComposant">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="Composant">
+              <PropertyRef Name="nom_famille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="composant_fournisseur2_FK">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Composant">
+              <PropertyRef Name="id_fournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="composant_unite_dusage0_FK">
+          <End Role="UniteDusage" Type="Self.UniteDusage" Multiplicity="1" />
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniteDusage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Composant">
+              <PropertyRef Name="id_unite_dusage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ligne_devis_composant1_FK">
+          <End Role="Composant" Type="Self.Composant" Multiplicity="1" />
+          <End Role="LigneDevis" Type="Self.LigneDevis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Composant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LigneDevis">
+              <PropertyRef Name="id_composant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comptable_userMadera0_FK">
+          <End Role="UserMadera" Type="Self.UserMadera" Multiplicity="1" />
+          <End Role="Comptable" Type="Self.Comptable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserMadera">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comptable">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="devis_gamme2_FK">
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="1" />
+          <End Role="Devis" Type="Self.Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Devis">
+              <PropertyRef Name="id_gamme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="devis_projet0_FK">
+          <End Role="Projet" Type="Self.Projet" Multiplicity="1" />
+          <End Role="Devis" Type="Self.Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Devis">
+              <PropertyRef Name="id_projet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="devis_statut_devis1_FK">
+          <End Role="StatutDevis" Type="Self.StatutDevis" Multiplicity="1" />
+          <End Role="Devis" Type="Self.Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatutDevis">
+              <PropertyRef Name="nom" />
+            </Principal>
+            <Dependent Role="Devis">
+              <PropertyRef Name="nom_statut_devis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ligne_devis_devis0_FK">
+          <End Role="Devis" Type="Self.Devis" Multiplicity="0..1" />
+          <End Role="LigneDevis" Type="Self.LigneDevis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devis">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LigneDevis">
+              <PropertyRef Name="id_devis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="echeance_de_paiement_facture0_FK">
+          <End Role="Facture" Type="Self.Facture" Multiplicity="1" />
+          <End Role="EcheanceDePaiement" Type="Self.EcheanceDePaiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facture">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EcheanceDePaiement">
+              <PropertyRef Name="id_facture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="paiement_echeance_de_paiement1_FK">
+          <End Role="EcheanceDePaiement" Type="Self.EcheanceDePaiement" Multiplicity="1" />
+          <End Role="Paiement" Type="Self.Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EcheanceDePaiement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Paiement">
+              <PropertyRef Name="id_echeance_de_paiement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="famille_de_composant_famille_de_composant0_FK">
+          <End Role="FamilleDeComposant" Type="Self.FamilleDeComposant" Multiplicity="1" />
+          <End Role="FamilleDeComposant1" Type="Self.FamilleDeComposant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeComposant">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="FamilleDeComposant1">
+              <PropertyRef Name="nom_famille_famille_de_composant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="famille_de_module_famille_de_module0_FK">
+          <End Role="FamilleDeModule" Type="Self.FamilleDeModule" Multiplicity="1" />
+          <End Role="FamilleDeModule1" Type="Self.FamilleDeModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeModule">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="FamilleDeModule1">
+              <PropertyRef Name="nom_famille_famille_de_module" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="huisserie_famille_de_module3_FK">
+          <End Role="FamilleDeModule" Type="Self.FamilleDeModule" Multiplicity="1" />
+          <End Role="Huisserie" Type="Self.Huisserie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeModule">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="Huisserie">
+              <PropertyRef Name="nom_famille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="module_famille_de_module2_FK">
+          <End Role="FamilleDeModule" Type="Self.FamilleDeModule" Multiplicity="1" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleDeModule">
+              <PropertyRef Name="nom_famille" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="nom_famille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="gamme_famille_gamme0_FK">
+          <End Role="FamilleGamme" Type="Self.FamilleGamme" Multiplicity="1" />
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilleGamme">
+              <PropertyRef Name="famille_gamme" />
+            </Principal>
+            <Dependent Role="Gamme">
+              <PropertyRef Name="famille_gamme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="gamme_unite_dusage1_FK">
+          <End Role="UniteDusage" Type="Self.UniteDusage" Multiplicity="1" />
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniteDusage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gamme">
+              <PropertyRef Name="id_unite_dusage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="huisserie_module0_FK">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="Huisserie" Type="Self.Huisserie" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Huisserie">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="huisserie_unite_dusage2_FK">
+          <End Role="UniteDusage" Type="Self.UniteDusage" Multiplicity="1" />
+          <End Role="Huisserie" Type="Self.Huisserie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniteDusage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Huisserie">
+              <PropertyRef Name="id_unite_dusage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="paiement_mode_paiement0_FK">
+          <End Role="ModePaiement" Type="Self.ModePaiement" Multiplicity="0..1" />
+          <End Role="Paiement" Type="Self.Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModePaiement">
+              <PropertyRef Name="mode" />
+            </Principal>
+            <Dependent Role="Paiement">
+              <PropertyRef Name="mode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="module_unite_dusage1_FK">
+          <End Role="UniteDusage" Type="Self.UniteDusage" Multiplicity="1" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniteDusage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="id_unite_dusage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LinkBureauetudeModule">
+          <End Role="BureauEtude" Type="Self.BureauEtude" Multiplicity="*" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+        </Association>
+        <Association Name="LinkCommercialProjet">
+          <End Role="Commercial" Type="Self.Commercial" Multiplicity="*" />
+          <End Role="Projet" Type="Self.Projet" Multiplicity="*" />
+        </Association>
+        <Association Name="LinkGammeCaracteristique">
+          <End Role="Caracteristique" Type="Self.Caracteristique" Multiplicity="*" />
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="*" />
+        </Association>
+        <Association Name="LinkGammeModule">
+          <End Role="Gamme" Type="Self.Gamme" Multiplicity="*" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+        </Association>
+        <Association Name="LinkModuleComposant">
+          <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+          <End Role="Module" Type="Self.Module" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BDDAPPLICATIONMADERAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BureauEtude" EntityType="Self.BureauEtude" />
+          <EntitySet Name="Caracteristique" EntityType="Self.Caracteristique" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="CommandeClient" EntityType="Self.CommandeClient" />
+          <EntitySet Name="CommandeFournisseur" EntityType="Self.CommandeFournisseur" />
+          <EntitySet Name="Commercial" EntityType="Self.Commercial" />
+          <EntitySet Name="Composant" EntityType="Self.Composant" />
+          <EntitySet Name="Comptable" EntityType="Self.Comptable" />
+          <EntitySet Name="Devis" EntityType="Self.Devis" />
+          <EntitySet Name="EcheanceDePaiement" EntityType="Self.EcheanceDePaiement" />
+          <EntitySet Name="Facture" EntityType="Self.Facture" />
+          <EntitySet Name="FamilleDeComposant" EntityType="Self.FamilleDeComposant" />
+          <EntitySet Name="FamilleDeModule" EntityType="Self.FamilleDeModule" />
+          <EntitySet Name="FamilleGamme" EntityType="Self.FamilleGamme" />
+          <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" />
+          <EntitySet Name="Gamme" EntityType="Self.Gamme" />
+          <EntitySet Name="Huisserie" EntityType="Self.Huisserie" />
+          <EntitySet Name="LigneDevis" EntityType="Self.LigneDevis" />
+          <EntitySet Name="ModePaiement" EntityType="Self.ModePaiement" />
+          <EntitySet Name="Module" EntityType="Self.Module" />
+          <EntitySet Name="Paiement" EntityType="Self.Paiement" />
+          <EntitySet Name="Projet" EntityType="Self.Projet" />
+          <EntitySet Name="StatutDevis" EntityType="Self.StatutDevis" />
+          <EntitySet Name="UniteDusage" EntityType="Self.UniteDusage" />
+          <EntitySet Name="UserMadera" EntityType="Self.UserMadera" />
+          <AssociationSet Name="bureau_etude_userMadera0_FK" Association="Self.bureau_etude_userMadera0_FK">
+            <End Role="UserMadera" EntitySet="UserMadera" />
+            <End Role="BureauEtude" EntitySet="BureauEtude" />
+          </AssociationSet>
+          <AssociationSet Name="composant_caracteristique1_FK" Association="Self.composant_caracteristique1_FK">
+            <End Role="Caracteristique" EntitySet="Caracteristique" />
+            <End Role="Composant" EntitySet="Composant" />
+          </AssociationSet>
+          <AssociationSet Name="huisserie_caracteristique1_FK" Association="Self.huisserie_caracteristique1_FK">
+            <End Role="Caracteristique" EntitySet="Caracteristique" />
+            <End Role="Huisserie" EntitySet="Huisserie" />
+          </AssociationSet>
+          <AssociationSet Name="module_caracteristique0_FK" Association="Self.module_caracteristique0_FK">
+            <End Role="Caracteristique" EntitySet="Caracteristique" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="projet_client0_FK" Association="Self.projet_client0_FK">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Projet" EntitySet="Projet" />
+          </AssociationSet>
+          <AssociationSet Name="commande_client_devis0_FK" Association="Self.commande_client_devis0_FK">
+            <End Role="Devis" EntitySet="Devis" />
+            <End Role="CommandeClient" EntitySet="CommandeClient" />
+          </AssociationSet>
+          <AssociationSet Name="commande_fournisseur_commande_client1_FK" Association="Self.commande_fournisseur_commande_client1_FK">
+            <End Role="CommandeClient" EntitySet="CommandeClient" />
+            <End Role="CommandeFournisseur" EntitySet="CommandeFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="facture_commande_client0_FK" Association="Self.facture_commande_client0_FK">
+            <End Role="CommandeClient" EntitySet="CommandeClient" />
+            <End Role="Facture" EntitySet="Facture" />
+          </AssociationSet>
+          <AssociationSet Name="commande_fournisseur_fournisseur0_FK" Association="Self.commande_fournisseur_fournisseur0_FK">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="CommandeFournisseur" EntitySet="CommandeFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="commercial_userMadera0_FK" Association="Self.commercial_userMadera0_FK">
+            <End Role="UserMadera" EntitySet="UserMadera" />
+            <End Role="Commercial" EntitySet="Commercial" />
+          </AssociationSet>
+          <AssociationSet Name="composant_famille_de_composant3_FK" Association="Self.composant_famille_de_composant3_FK">
+            <End Role="FamilleDeComposant" EntitySet="FamilleDeComposant" />
+            <End Role="Composant" EntitySet="Composant" />
+          </AssociationSet>
+          <AssociationSet Name="composant_fournisseur2_FK" Association="Self.composant_fournisseur2_FK">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Composant" EntitySet="Composant" />
+          </AssociationSet>
+          <AssociationSet Name="composant_unite_dusage0_FK" Association="Self.composant_unite_dusage0_FK">
+            <End Role="UniteDusage" EntitySet="UniteDusage" />
+            <End Role="Composant" EntitySet="Composant" />
+          </AssociationSet>
+          <AssociationSet Name="ligne_devis_composant1_FK" Association="Self.ligne_devis_composant1_FK">
+            <End Role="Composant" EntitySet="Composant" />
+            <End Role="LigneDevis" EntitySet="LigneDevis" />
+          </AssociationSet>
+          <AssociationSet Name="comptable_userMadera0_FK" Association="Self.comptable_userMadera0_FK">
+            <End Role="UserMadera" EntitySet="UserMadera" />
+            <End Role="Comptable" EntitySet="Comptable" />
+          </AssociationSet>
+          <AssociationSet Name="devis_gamme2_FK" Association="Self.devis_gamme2_FK">
+            <End Role="Gamme" EntitySet="Gamme" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="devis_projet0_FK" Association="Self.devis_projet0_FK">
+            <End Role="Projet" EntitySet="Projet" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="devis_statut_devis1_FK" Association="Self.devis_statut_devis1_FK">
+            <End Role="StatutDevis" EntitySet="StatutDevis" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="ligne_devis_devis0_FK" Association="Self.ligne_devis_devis0_FK">
+            <End Role="Devis" EntitySet="Devis" />
+            <End Role="LigneDevis" EntitySet="LigneDevis" />
+          </AssociationSet>
+          <AssociationSet Name="echeance_de_paiement_facture0_FK" Association="Self.echeance_de_paiement_facture0_FK">
+            <End Role="Facture" EntitySet="Facture" />
+            <End Role="EcheanceDePaiement" EntitySet="EcheanceDePaiement" />
+          </AssociationSet>
+          <AssociationSet Name="paiement_echeance_de_paiement1_FK" Association="Self.paiement_echeance_de_paiement1_FK">
+            <End Role="EcheanceDePaiement" EntitySet="EcheanceDePaiement" />
+            <End Role="Paiement" EntitySet="Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="famille_de_composant_famille_de_composant0_FK" Association="Self.famille_de_composant_famille_de_composant0_FK">
+            <End Role="FamilleDeComposant" EntitySet="FamilleDeComposant" />
+            <End Role="FamilleDeComposant1" EntitySet="FamilleDeComposant" />
+          </AssociationSet>
+          <AssociationSet Name="famille_de_module_famille_de_module0_FK" Association="Self.famille_de_module_famille_de_module0_FK">
+            <End Role="FamilleDeModule" EntitySet="FamilleDeModule" />
+            <End Role="FamilleDeModule1" EntitySet="FamilleDeModule" />
+          </AssociationSet>
+          <AssociationSet Name="huisserie_famille_de_module3_FK" Association="Self.huisserie_famille_de_module3_FK">
+            <End Role="FamilleDeModule" EntitySet="FamilleDeModule" />
+            <End Role="Huisserie" EntitySet="Huisserie" />
+          </AssociationSet>
+          <AssociationSet Name="module_famille_de_module2_FK" Association="Self.module_famille_de_module2_FK">
+            <End Role="FamilleDeModule" EntitySet="FamilleDeModule" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="gamme_famille_gamme0_FK" Association="Self.gamme_famille_gamme0_FK">
+            <End Role="FamilleGamme" EntitySet="FamilleGamme" />
+            <End Role="Gamme" EntitySet="Gamme" />
+          </AssociationSet>
+          <AssociationSet Name="gamme_unite_dusage1_FK" Association="Self.gamme_unite_dusage1_FK">
+            <End Role="UniteDusage" EntitySet="UniteDusage" />
+            <End Role="Gamme" EntitySet="Gamme" />
+          </AssociationSet>
+          <AssociationSet Name="huisserie_module0_FK" Association="Self.huisserie_module0_FK">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Huisserie" EntitySet="Huisserie" />
+          </AssociationSet>
+          <AssociationSet Name="huisserie_unite_dusage2_FK" Association="Self.huisserie_unite_dusage2_FK">
+            <End Role="UniteDusage" EntitySet="UniteDusage" />
+            <End Role="Huisserie" EntitySet="Huisserie" />
+          </AssociationSet>
+          <AssociationSet Name="paiement_mode_paiement0_FK" Association="Self.paiement_mode_paiement0_FK">
+            <End Role="ModePaiement" EntitySet="ModePaiement" />
+            <End Role="Paiement" EntitySet="Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="module_unite_dusage1_FK" Association="Self.module_unite_dusage1_FK">
+            <End Role="UniteDusage" EntitySet="UniteDusage" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="LinkBureauetudeModule" Association="Self.LinkBureauetudeModule">
+            <End Role="BureauEtude" EntitySet="BureauEtude" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="LinkCommercialProjet" Association="Self.LinkCommercialProjet">
+            <End Role="Commercial" EntitySet="Commercial" />
+            <End Role="Projet" EntitySet="Projet" />
+          </AssociationSet>
+          <AssociationSet Name="LinkGammeCaracteristique" Association="Self.LinkGammeCaracteristique">
+            <End Role="Caracteristique" EntitySet="Caracteristique" />
+            <End Role="Gamme" EntitySet="Gamme" />
+          </AssociationSet>
+          <AssociationSet Name="LinkGammeModule" Association="Self.LinkGammeModule">
+            <End Role="Gamme" EntitySet="Gamme" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="LinkModuleComposant" Association="Self.LinkModuleComposant">
+            <End Role="Composant" EntitySet="Composant" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDDAPPLICATIONMADERAModelStoreContainer" CdmEntityContainer="BDDAPPLICATIONMADERAEntities">
+          <EntitySetMapping Name="BureauEtude">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.BureauEtude">
+              <MappingFragment StoreEntitySet="BureauEtude">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
+                <ScalarProperty Name="service" ColumnName="service" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="tel_portable" ColumnName="tel_portable" />
+                <ScalarProperty Name="poste" ColumnName="poste" />
+                <ScalarProperty Name="date__heure_de_connexion" ColumnName="date__heure_de_connexion" />
+                <ScalarProperty Name="userMaderaname" ColumnName="userMaderaname" />
+                <ScalarProperty Name="categorie" ColumnName="categorie" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Caracteristique">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Caracteristique">
+              <MappingFragment StoreEntitySet="Caracteristique">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description_caracteristique" ColumnName="description_caracteristique" />
+                <ScalarProperty Name="unite_caracteristique" ColumnName="unite_caracteristique" />
+                <ScalarProperty Name="valeur_caracteristique" ColumnName="valeur_caracteristique" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="adresse1" ColumnName="adresse1" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="protable" ColumnName="protable" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="intitule" ColumnName="intitule" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommandeClient">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.CommandeClient">
+              <MappingFragment StoreEntitySet="CommandeClient">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id_devis" ColumnName="id_devis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommandeFournisseur">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.CommandeFournisseur">
+              <MappingFragment StoreEntitySet="CommandeFournisseur">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date_creation" ColumnName="date_creation" />
+                <ScalarProperty Name="date_relance" ColumnName="date_relance" />
+                <ScalarProperty Name="date_livraison" ColumnName="date_livraison" />
+                <ScalarProperty Name="nombre_relances" ColumnName="nombre_relances" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+                <ScalarProperty Name="id_commande_client" ColumnName="id_commande_client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commercial">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Commercial">
+              <MappingFragment StoreEntitySet="Commercial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
+                <ScalarProperty Name="service" ColumnName="service" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="tel_portable" ColumnName="tel_portable" />
+                <ScalarProperty Name="poste" ColumnName="poste" />
+                <ScalarProperty Name="date__heure_de_connexion" ColumnName="date__heure_de_connexion" />
+                <ScalarProperty Name="userMaderaname" ColumnName="userMaderaname" />
+                <ScalarProperty Name="categorie" ColumnName="categorie" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Composant">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Composant">
+              <MappingFragment StoreEntitySet="Composant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nature" ColumnName="nature" />
+                <ScalarProperty Name="image_produit" ColumnName="image_produit" />
+                <ScalarProperty Name="couleur_dessin" ColumnName="couleur_dessin" />
+                <ScalarProperty Name="prix_HT" ColumnName="prix_HT" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="quantite_limite_de_stock_pour_commande_auto" ColumnName="quantite_limite_de_stock_pour_commande_auto" />
+                <ScalarProperty Name="nombre_de_composant_par_commande" ColumnName="nombre_de_composant_par_commande" />
+                <ScalarProperty Name="commande_auto_active" ColumnName="commande_auto_active" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id_unite_dusage" ColumnName="id_unite_dusage" />
+                <ScalarProperty Name="id_caracteristique" ColumnName="id_caracteristique" />
+                <ScalarProperty Name="id_fournisseur" ColumnName="id_fournisseur" />
+                <ScalarProperty Name="nom_famille" ColumnName="nom_famille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comptable">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Comptable">
+              <MappingFragment StoreEntitySet="Comptable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
+                <ScalarProperty Name="service" ColumnName="service" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="tel_portable" ColumnName="tel_portable" />
+                <ScalarProperty Name="poste" ColumnName="poste" />
+                <ScalarProperty Name="date__heure_de_connexion" ColumnName="date__heure_de_connexion" />
+                <ScalarProperty Name="userMaderaname" ColumnName="userMaderaname" />
+                <ScalarProperty Name="categorie" ColumnName="categorie" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devis">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Devis">
+              <MappingFragment StoreEntitySet="Devis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="dossier_devis" ColumnName="dossier_devis" />
+                <ScalarProperty Name="dossier_technique" ColumnName="dossier_technique" />
+                <ScalarProperty Name="pourcentage_tva" ColumnName="pourcentage_tva" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id_projet" ColumnName="id_projet" />
+                <ScalarProperty Name="nom_statut_devis" ColumnName="nom_statut_devis" />
+                <ScalarProperty Name="id_gamme" ColumnName="id_gamme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EcheanceDePaiement">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.EcheanceDePaiement">
+              <MappingFragment StoreEntitySet="EcheanceDePaiement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="pourcentage_du" ColumnName="pourcentage_du" />
+                <ScalarProperty Name="date_facturation" ColumnName="date_facturation" />
+                <ScalarProperty Name="date_relance" ColumnName="date_relance" />
+                <ScalarProperty Name="nombre_relances" ColumnName="nombre_relances" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="id_facture" ColumnName="id_facture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facture">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Facture">
+              <MappingFragment StoreEntitySet="Facture">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id_commande_client" ColumnName="id_commande_client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilleDeComposant">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.FamilleDeComposant">
+              <MappingFragment StoreEntitySet="FamilleDeComposant">
+                <ScalarProperty Name="nom_famille" ColumnName="nom_famille" />
+                <ScalarProperty Name="nom_famille_famille_de_composant" ColumnName="nom_famille_famille_de_composant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilleDeModule">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.FamilleDeModule">
+              <MappingFragment StoreEntitySet="FamilleDeModule">
+                <ScalarProperty Name="nom_famille" ColumnName="nom_famille" />
+                <ScalarProperty Name="nom_famille_famille_de_module" ColumnName="nom_famille_famille_de_module" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilleGamme">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.FamilleGamme">
+              <MappingFragment StoreEntitySet="FamilleGamme">
+                <ScalarProperty Name="famille_gamme" ColumnName="famille_gamme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fournisseur">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Fournisseur">
+              <MappingFragment StoreEntitySet="Fournisseur">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="raison_sociale" ColumnName="raison_sociale" />
+                <ScalarProperty Name="numero_tva" ColumnName="numero_tva" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="adresseSiegeSocial" ColumnName="adresseSiegeSocial" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gamme">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Gamme">
+              <MappingFragment StoreEntitySet="Gamme">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom_gamme" ColumnName="nom_gamme" />
+                <ScalarProperty Name="famille_couverture" ColumnName="famille_couverture" />
+                <ScalarProperty Name="famille_isolant" ColumnName="famille_isolant" />
+                <ScalarProperty Name="famille_finition_exterieure" ColumnName="famille_finition_exterieure" />
+                <ScalarProperty Name="mode_conception_ossature" ColumnName="mode_conception_ossature" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="famille_gamme" ColumnName="famille_gamme" />
+                <ScalarProperty Name="id_unite_dusage" ColumnName="id_unite_dusage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Huisserie">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Huisserie">
+              <MappingFragment StoreEntitySet="Huisserie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descriptif" ColumnName="descriptif" />
+                <ScalarProperty Name="qualite" ColumnName="qualite" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="coupe_de_principe" ColumnName="coupe_de_principe" />
+                <ScalarProperty Name="cctp" ColumnName="cctp" />
+                <ScalarProperty Name="created_at_module" ColumnName="created_at_module" />
+                <ScalarProperty Name="updated_at_module" ColumnName="updated_at_module" />
+                <ScalarProperty Name="id_caracteristique" ColumnName="id_caracteristique" />
+                <ScalarProperty Name="id_unite_dusage" ColumnName="id_unite_dusage" />
+                <ScalarProperty Name="nom_famille" ColumnName="nom_famille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LigneDevis">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.LigneDevis">
+              <MappingFragment StoreEntitySet="LigneDevis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="quantite" ColumnName="quantite" />
+                <ScalarProperty Name="prixHT" ColumnName="prixHT" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id_devis" ColumnName="id_devis" />
+                <ScalarProperty Name="id_composant" ColumnName="id_composant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModePaiement">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.ModePaiement">
+              <MappingFragment StoreEntitySet="ModePaiement">
+                <ScalarProperty Name="mode" ColumnName="mode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Module">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="coupe_de_principe" ColumnName="coupe_de_principe" />
+                <ScalarProperty Name="cctp" ColumnName="cctp" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id_caracteristique" ColumnName="id_caracteristique" />
+                <ScalarProperty Name="id_unite_dusage" ColumnName="id_unite_dusage" />
+                <ScalarProperty Name="nom_famille" ColumnName="nom_famille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paiement">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Paiement">
+              <MappingFragment StoreEntitySet="Paiement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date_paiement" ColumnName="date_paiement" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="monnaie" ColumnName="monnaie" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="mode" ColumnName="mode" />
+                <ScalarProperty Name="id_echeance_de_paiement" ColumnName="id_echeance_de_paiement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projet">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.Projet">
+              <MappingFragment StoreEntitySet="Projet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatutDevis">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.StatutDevis">
+              <MappingFragment StoreEntitySet="StatutDevis">
+                <ScalarProperty Name="nom" ColumnName="nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UniteDusage">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.UniteDusage">
+              <MappingFragment StoreEntitySet="UniteDusage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description_unite_usage" ColumnName="description_unite_usage" />
+                <ScalarProperty Name="unite_unite_usage" ColumnName="unite_unite_usage" />
+                <ScalarProperty Name="valeur_unite_usage" ColumnName="valeur_unite_usage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMadera">
+            <EntityTypeMapping TypeName="BDDAPPLICATIONMADERAModel.UserMadera">
+              <MappingFragment StoreEntitySet="UserMadera">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
+                <ScalarProperty Name="service" ColumnName="service" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="tel_portable" ColumnName="tel_portable" />
+                <ScalarProperty Name="poste" ColumnName="poste" />
+                <ScalarProperty Name="date__heure_de_connexion" ColumnName="date__heure_de_connexion" />
+                <ScalarProperty Name="userMaderaname" ColumnName="userMaderaname" />
+                <ScalarProperty Name="categorie" ColumnName="categorie" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="LinkBureauetudeModule" TypeName="BDDAPPLICATIONMADERAModel.LinkBureauetudeModule" StoreEntitySet="LinkBureauetudeModule">
+            <EndProperty Name="BureauEtude">
+              <ScalarProperty Name="id" ColumnName="id_bureau_etude" />
+            </EndProperty>
+            <EndProperty Name="Module">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LinkCommercialProjet" TypeName="BDDAPPLICATIONMADERAModel.LinkCommercialProjet" StoreEntitySet="LinkCommercialProjet">
+            <EndProperty Name="Commercial">
+              <ScalarProperty Name="id" ColumnName="id_commercial" />
+            </EndProperty>
+            <EndProperty Name="Projet">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LinkGammeCaracteristique" TypeName="BDDAPPLICATIONMADERAModel.LinkGammeCaracteristique" StoreEntitySet="LinkGammeCaracteristique">
+            <EndProperty Name="Caracteristique">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <EndProperty Name="Gamme">
+              <ScalarProperty Name="id" ColumnName="id_gamme" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LinkGammeModule" TypeName="BDDAPPLICATIONMADERAModel.LinkGammeModule" StoreEntitySet="LinkGammeModule">
+            <EndProperty Name="Gamme">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <EndProperty Name="Module">
+              <ScalarProperty Name="id" ColumnName="id_module" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LinkModuleComposant" TypeName="BDDAPPLICATIONMADERAModel.LinkModuleComposant" StoreEntitySet="LinkModuleComposant">
+            <EndProperty Name="Composant">
+              <ScalarProperty Name="id" ColumnName="id_composant" />
+            </EndProperty>
+            <EndProperty Name="Module">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

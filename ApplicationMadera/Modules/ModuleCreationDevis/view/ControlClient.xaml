@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="ApplicationMadera.Modules.ModuleCreationDevis.view.ControlClient"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ApplicationMadera.Modules.ModuleCreationDevis.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.Resources>
+            <Style TargetType="StackPanel" >
+                <Setter Property="Margin" Value="10" />
+            </Style>
+
+            <Style x:Key="Titre" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="{Binding Statut}" materialDesign:HintAssist.Hint="Identifiant" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding Name2}" materialDesign:HintAssist.Hint="Identifiant" VerticalAlignment="Center" Style="{StaticResource Titre}" />
+            <TextBlock Text="{Binding Client.adresse1}" materialDesign:HintAssist.Hint="Identifiant" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding Client.telephone}" materialDesign:HintAssist.Hint="Identifiant" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding Client.protable}" materialDesign:HintAssist.Hint="Identifiant" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding Client.email}" materialDesign:HintAssist.Hint="Identifiant" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Projet" materialDesign:HintAssist.Hint="Identifiant" VerticalAlignment="Center" Style="{StaticResource Titre}" />
+        </StackPanel>
+
+        <ListBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding ViewModelProjets.ListProjets}" IsSynchronizedWithCurrentItem="True">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.RowSpan="2">
+                            <Image Source="{Binding Image}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Grid.ColumnSpan="2">
+                            <TextBlock Text="{Binding Projet.nom}" Style="{StaticResource Titre}"/>
+                            <TextBlock Text="{Binding Client.Name}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="1">
+                            <TextBlock Text="{Binding Statut}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right">
+                            <Button Content="CONSULTER" Command="{Binding ConsulterProjet}" Style="{StaticResource MaterialDesignFlatButton}"/>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock Text="Devis (pas pertinent de les mettre la)" materialDesign:HintAssist.Hint="Identifiant" VerticalAlignment="Center" Style="{StaticResource Titre}" />
+        </StackPanel>
+
+        <Button Grid.Row="4" Grid.Column="2" Command="{Binding CommandDel}" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" Margin="20" Foreground="White" HorizontalAlignment="Right" >
+            <materialDesign:PackIcon Kind="TrashCanOutline" />
+        </Button>
+    </Grid>
+</UserControl>

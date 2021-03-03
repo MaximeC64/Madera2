@@ -1,0 +1,137 @@
+﻿<Window x:Class="ApplicationMadera.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:ApplicationMadera.Properties"
+        xmlns:local="clr-namespace:ApplicationMadera"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:ViewMaderaMain="clr-namespace:ApplicationMadera.MaderaMain.view"
+        xmlns:ViewUtilisateur="clr-namespace:ApplicationMadera.Utilisateurs.view"
+        xmlns:ViewModules="clr-namespace:ApplicationMadera.Modules.ModuleCreationDevis.view"
+        xmlns:ViewModelMaderaMain="clr-namespace:ApplicationMadera.MaderaMain.viewmodel"
+        xmlns:ViewModelUtilisateur="clr-namespace:ApplicationMadera.Utilisateurs.viewmodel"
+        xmlns:ViewModelModules="clr-namespace:ApplicationMadera.Modules.ModuleCreationDevis.viewmodel"
+        xmlns:VMMW="clr-namespace:ApplicationMadera"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
+    <Window.Resources>
+        
+        <Storyboard x:Key="sbShowLeftMenu" >
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-200,0,0,0" To="0" DecelerationRatio=".9" Duration="0:0:0.3" />
+        </Storyboard>
+        <Storyboard x:Key="sbHideLeftMenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0" To="-200,0,0,0" AccelerationRatio=".9" Duration="0:0:0.3" />
+        </Storyboard>
+        
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <!--POUR VERSION SANS FRAME-->
+        <DataTemplate DataType="{x:Type ViewModelMaderaMain:ViewModelConnexion}">
+            <ViewMaderaMain:ControlConnexion/>
+        </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModelUtilisateur:ViewModelClients}">
+            <ViewUtilisateur:ControlClients/>
+        </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModelUtilisateur:ViewModelProjets}">
+            <ViewUtilisateur:ControlProjets/>
+        </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModelModules:ViewModelFicheClient}">
+            <ViewModules:ControlFicheClient/>
+        </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModelModules:ViewModelFicheProjet}">
+            <ViewModules:ControlFicheProjet/>
+        </DataTemplate>
+        <DataTemplate  DataType="{x:Type ViewModelModules:ViewModelClient}">
+            <ViewModules:ControlClient/>
+        </DataTemplate>
+        
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <!--POUR VERSION SANS FRAME-->
+
+       
+
+    </Window.Resources>
+
+    <Window.DataContext>
+        <VMMW:ViewModelMainWindow />
+    </Window.DataContext>
+
+    
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Name="MainMenu" Visibility="{Binding Path=MenuVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <MenuItem Name="btn" Header="Menu" Click="myButton_Click"/>
+        </Menu>
+
+        <StackPanel Panel.ZIndex="2" x:Name="spLeft" Background="#2D3446" Width="200" Margin="-203,0,796.333,-0.333" Grid.RowSpan="2" HorizontalAlignment="Left" >
+            <DockPanel>
+                <Button Name="btn2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="50" Content="X"  Click="btn2_Click" Background="Transparent"></Button>
+            </DockPanel>
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Height="50">
+                <StackPanel>
+                    <DockPanel>
+                        <Label Content="{Binding NomUtilisateur}"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label Content="{Binding UserMadera.email}"/>
+                    </DockPanel>
+                </StackPanel>
+            </DockPanel>
+
+
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Height="50">
+                <Button Name="clients" Width="140" Content="{x:Static p:Resources.clients}" VerticalAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0"  Background="Transparent" Click="clients_Click"
+                        
+                        Command="{Binding ChargerListeClients}"
+                        
+                        ></Button>
+            </DockPanel>
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                <Button Name="projets" Width="140" Content="{x:Static p:Resources.projets}" VerticalAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0"  Background="Transparent" Click="projets_Click"
+                        
+                        Command="{Binding ChargerListeProjets}"
+                        
+                        ></Button>
+            </DockPanel>
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                <Button Name="gammes" Width="140" Content="{x:Static p:Resources.gammes}" VerticalAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0"  Background="Transparent" Click="gammes_Click"></Button>
+            </DockPanel>
+
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                <Button Name="compteUtilisateur" Width="140" Content="{x:Static p:Resources.moncompte}" VerticalAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0"  Background="Transparent" Click="compteUtilisateur_Click"></Button>
+            </DockPanel>
+
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                <Button Name="deconnexion" Width="140" Content="Déconnexion" VerticalAlignment="Center" HorizontalContentAlignment="Left" BorderThickness="0"  Background="Transparent" Click="btn2_Click"
+                        
+                        Command="{Binding CommandDisconnect}"
+                        
+                        ></Button>
+            </DockPanel>
+        </StackPanel>
+
+        <Frame Name="MainFrame" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding View}" NavigationUIVisibility="Hidden">
+        </Frame>
+        
+        <!--POUR VERSION SANS FRAME-->
+        <ContentControl x:Name="contentControl" Grid.Row="1" Content="{Binding SelectedViewModel}" />
+        <!--POUR VERSION SANS FRAME-->
+        
+    </Grid>
+</Window>

@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="ApplicationMadera.Modules.ModuleCreationDevis.view.ControlFicheComposant"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ApplicationMadera.Modules.ModuleCreationDevis.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style TargetType="{x:Type StackPanel}" BasedOn="{StaticResource {x:Type StackPanel}}">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1">
+            <TextBox materialDesign:HintAssist.Hint="Nom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <ComboBox materialDesign:HintAssist.Hint="Unité" MinWidth="300" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding ViewModelGammes.ListeGammes}" DisplayMemberPath="Name" SelectedValue="{Binding ViewModelGammes.GammeSelected}" IsSynchronizedWithCurrentItem="True">
+                <ComboBoxItem IsSelected="True">mm</ComboBoxItem>
+                <ComboBoxItem>cm</ComboBoxItem>
+                <ComboBoxItem>m²</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <ComboBox materialDesign:HintAssist.Hint="Client" MinWidth="300" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding FamilleComposants.ListeFamilles}" DisplayMemberPath="Name" SelectedValue="{Binding ViewModelClients.FamilleSelected}" IsSynchronizedWithCurrentItem="True"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <Button Style="{StaticResource MaterialDesignIconButton}" HorizontalAlignment="Left" Command="{Binding CreerClient}">
+                <materialDesign:PackIcon Kind="LibraryAdd" />
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBox materialDesign:HintAssist.Hint="Prix HT" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Height="100" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Descriptif" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="2" VerticalAlignment="Bottom">
+            <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ButtonAssist.CornerRadius="25" Command="{Binding CreerProjet}">
+                <DockPanel>
+                    <materialDesign:PackIcon Kind="Check" Foreground="White" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                    <TextBlock Text="Enregistrer" Foreground="White"/>
+                </DockPanel>
+            </Button>
+        </StackPanel>
+            
+    </Grid>
+</UserControl>

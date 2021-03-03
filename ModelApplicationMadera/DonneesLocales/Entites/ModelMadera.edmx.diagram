@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dfcf8338662b4565989ac96fa3691be3" Name="Diagram1">
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.BureauEtude" Width="1.5" PointX="9" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Caracteristique" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Client" Width="1.5" PointX="3.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.CommandeClient" Width="1.5" PointX="10.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.CommandeFournisseur" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Commercial" Width="1.5" PointX="3.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Composant" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Comptable" Width="1.5" PointX="3.75" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Devis" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.EcheanceDePaiement" Width="1.5" PointX="15" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Facture" Width="1.5" PointX="12.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.FamilleDeComposant" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.FamilleDeModule" Width="1.5" PointX="9" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.FamilleGamme" Width="1.5" PointX="3.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Fournisseur" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Gamme" Width="1.5" PointX="6" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Huisserie" Width="1.5" PointX="13.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.LigneDevis" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.ModePaiement" Width="1.5" PointX="15" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Module" Width="1.5" PointX="11.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Paiement" Width="1.5" PointX="17.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.Projet" Width="1.5" PointX="6" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.StatutDevis" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.UniteDusage" Width="1.5" PointX="0.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDDAPPLICATIONMADERAModel.UserMadera" Width="1.5" PointX="1.5" PointY="26" IsExpanded="true" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.bureau_etude_userMadera0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.composant_caracteristique1_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.huisserie_caracteristique1_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.module_caracteristique0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.projet_client0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.commande_client_devis0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.commande_fournisseur_commande_client1_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.facture_commande_client0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.commande_fournisseur_fournisseur0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.commercial_userMadera0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.composant_famille_de_composant3_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.composant_fournisseur2_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.composant_unite_dusage0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.ligne_devis_composant1_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.comptable_userMadera0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.devis_gamme2_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.devis_projet0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.devis_statut_devis1_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.ligne_devis_devis0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.echeance_de_paiement_facture0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.paiement_echeance_de_paiement1_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.famille_de_composant_famille_de_composant0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.famille_de_module_famille_de_module0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.huisserie_famille_de_module3_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.module_famille_de_module2_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.gamme_famille_gamme0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.gamme_unite_dusage1_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.huisserie_module0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.huisserie_unite_dusage2_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.paiement_mode_paiement0_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.module_unite_dusage1_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.LinkBureauetudeModule" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.LinkCommercialProjet" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.LinkGammeCaracteristique" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.LinkGammeModule" ManuallyRouted="false" />
+        <AssociationConnector Association="BDDAPPLICATIONMADERAModel.LinkModuleComposant" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

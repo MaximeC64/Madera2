@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="ApplicationMadera.Modules.ModuleCreationDevis.view.ControlDevis"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ApplicationMadera.Modules.ModuleCreationDevis.view"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.ColumnSpan="3">
+            <TextBlock Text="PROJET EN COURS"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3">
+            <TextBlock Text="{Binding Client.Nom}"/>
+            <TextBlock Text="{Binding Client.Adresse}"/>
+            <TextBlock Text="{Binding Client.Ville}"/>
+            <TextBlock Text="{Binding Client.Telephone}"/>
+            <TextBlock Text="{Binding Client.Email}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3">
+            <TextBlock Text="{Binding Projet.Nom}"/>
+            <TextBlock Text="{Binding Statut}"/>
+            <TextBlock Text="{Binding Reference}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="3">
+            <DataGrid Margin="0 8 0 0" ItemsSource="{Binding ViewModelComposants.ListeComposants}" CanUserSortColumns="True" CanUserAddRows="False" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <TextBlock Text="Sous-Total HT"/>
+            <TextBlock Text="TVA(20 %)"/>
+            <TextBlock Text="Sous-Total TTC"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="2">
+            <TextBlock Text="{Binding PrixHT}"/>
+            <TextBlock Text="{Binding TVA}"/>
+            <TextBlock Text="{Binding PrixTTC}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

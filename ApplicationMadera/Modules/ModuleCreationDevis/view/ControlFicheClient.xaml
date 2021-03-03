@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="ApplicationMadera.Modules.ModuleCreationDevis.view.ControlFicheClient"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ApplicationMadera.Modules.ModuleCreationDevis.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="FontSize" Value="30"/>
+            </Style>
+
+            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" MinWidth="300">
+            <TextBox Text="{Binding Client.nom}" materialDesign:HintAssist.Hint="Prenom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox Text="{Binding Client.prenom}" materialDesign:HintAssist.Hint="Nom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBox Text="{Binding Client.adresse1}" materialDesign:HintAssist.Hint="Adresse" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBox Text="{Binding Client.telephone}" materialDesign:HintAssist.Hint="Telephone Fixe" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <TextBox Text="{Binding Client.protable}" materialDesign:HintAssist.Hint="Telephone Portable" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <TextBox Text="{Binding Client.email}" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="1">
+            <TextBox Text="{Binding Client.type}" materialDesign:HintAssist.Hint="Type" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="1">
+            <RadioButton GroupName="sex" IsChecked="{Binding RadioHomme}" Style="{StaticResource MaterialDesignRadioButton}">Homme</RadioButton>
+            <RadioButton GroupName="sex" IsChecked="{Binding RadioFemme}" Style="{StaticResource MaterialDesignRadioButton}">Femme</RadioButton>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.Column="2" VerticalAlignment="Bottom">
+            <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" MinWidth="150" MaxWidth="300" Margin="10 10 50 10" materialDesign:ButtonAssist.CornerRadius="25" Command="{Binding CommandSave}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Check" Foreground="White" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                    <TextBlock Text="Enregistrer" Foreground="White"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="ApplicationMadera.Utilisateurs.view.ControlClients"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ApplicationMadera.Utilisateurs.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style x:Key="Titre" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding ListClients}" IsSynchronizedWithCurrentItem="True">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <TextBlock Text="{Binding Statut}"/>
+                            <TextBlock Text="{Binding Name2}" Style="{StaticResource Titre}"/>
+                            <TextBlock Text="{Binding Client.adresse1}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right">
+                            <Button Content="CONTACTER" Command="{Binding ConsulterProjet}" Style="{StaticResource MaterialDesignFlatButton}"/>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right">
+                            <Button Content="CONSULTER" Command="{Binding DataContext.ChargerConsultClient, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" CommandParameter="{Binding Client.id}" Style="{StaticResource MaterialDesignFlatButton}"/>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Grid.Row="1" Grid.Column="2" Command="{Binding DataContext.ChargerAjoutClient, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Margin="20" Foreground="White">
+            <materialDesign:PackIcon Kind="Plus" />
+        </Button>
+        
+    </Grid>
+</UserControl>
